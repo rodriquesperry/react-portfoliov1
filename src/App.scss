@@ -1,0 +1,171 @@
+@import "~@fontsource/lobster/index.css";
+@import "@fontsource/arimo/400.css";
+
+
+$skyBlue: rgba(135, 206, 235, 1);
+$navBlue:  rgb(42, 106, 131);
+
+$total: 10;
+
+body{
+  overflow: hidden;
+}
+
+.nav {
+  // background: #15171c;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.navToggleIcon {
+  margin-left: 2rem;
+  font-size: 2rem;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #15171c;
+  position: fixed;
+}
+
+.sidebarWrap {
+  width: 100%;
+}
+
+.close {
+  margin-left: 2rem;
+  font-size: 2rem;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  color: #15171c;
+}
+
+.navLinks {
+  padding-top: 1.5rem;  
+}
+
+.navLinks a{
+text-decoration: none;
+}
+
+
+.navLink {
+  display: flex;
+  margin: 2rem 0 0 2rem;
+  align-items: center;
+}
+
+.navIcon {
+  font-size: 2rem;
+  color: $navBlue;
+}
+
+.linkText {
+  font-size: 1.5rem;
+  margin-left: 1.4rem;
+  color: $navBlue;
+}
+
+.main {
+}
+
+.hero {
+  // height: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.bodyTag {
+  font-family: 'Lobster', cursive;
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: grayscale($color: #8a8a8a);
+  margin-right: 430px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.h1Tags {
+  margin-left: 50px;
+}
+
+.heroH1 {
+  // margin-left: 50px;
+  font-family: 'Lobster', cursive;
+  font-weight: 100;
+  font-size: 1.5rem;
+  color: grayscale($color: #8a8a8a);
+
+}
+
+.intro {
+  font-size: 3.5rem;
+  font-family: 'Arimo', sans-serif;
+  margin-left: 2rem;
+  color: #15171c;
+}
+
+.firstLetter {
+  color: red;
+}
+
+.wrap {
+  perspective-origin: 50% 50%;
+}
+
+.svg{
+  stroke:$skyBlue;
+  position:absolute;
+  bottom: -100vh;
+  transform-style: preserve-3d;
+}
+
+@media screen and (max-width: 375px) {
+  .hero {
+    // height: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-left: 150px;
+  }
+
+  .h1Tags {
+    margin-left: 20px;
+  }
+
+  .intro {
+    font-size: 3.5rem;
+    font-family: 'Arimo', sans-serif;
+    margin-right: 2rem;
+    color: #15171c;
+  }
+}
+
+@for $i from 1 through $total {
+  $scale:random(2) - .4;
+  
+  .svg:nth-child(#{$i}){
+    left:random(120) * 1% - 20;
+    animation: raise#{$i} 6 + random(15) +s linear infinite;
+    animation-delay:random(5) - 5 + s;
+    transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+    z-index: $i - 7;
+    filter: blur($i - 6 + px);
+
+    @keyframes raise#{$i} {
+      to{
+       bottom:100vh;
+       transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+      }
+    }
+  }
+}
